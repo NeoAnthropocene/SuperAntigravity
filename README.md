@@ -51,22 +51,24 @@ Type `/` + command name in Antigravity:
 
 | Command | What it does |
 |---------|-------------|
-| `/brainstorm` | Requirements discovery before writing code |
-| `/plan` | Write a detailed implementation plan |
-| `/implement` | Feature implementation with TDD |
+| `/brainstorm` | [Step 1] Requirements discovery before writing code |
+| `/plan` | [Step 2] Write a detailed implementation plan |
+| `/implement` | [Step 3] Feature implementation with TDD |
 | `/research` | Deep multi-source research |
 | `/build` | Build and package project |
 | `/test` | Run tests with coverage |
-| `/git` | Git operations with smart commits |
+| `/git` | [Step 5] Git operations with smart commits |
 | `/analyze` | Code quality, security, performance review |
 | `/design` | Architecture and API design |
 | `/troubleshoot` | Systematic debugging |
 | `/explain` | Explain code or concepts |
 | `/improve` | Apply code improvements |
-| `/review` | Code review |
+| `/review` | [Step 4] Code review |
 | `/cleanup` | Remove dead code |
 | `/document` | Generate documentation |
 | `/estimate` | Development estimates |
+
+> Each command is backed by a workflow file in `~/.gemini/antigravity/global_workflows/` — you can inspect and customize them.
 
 ### 6 Specialist Agents
 

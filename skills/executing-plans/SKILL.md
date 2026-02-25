@@ -19,7 +19,7 @@ Load plan, review critically, execute tasks in batches, report for review betwee
 - (a) You are on main or master branch without explicit user instruction
 - (b) There are uncommitted changes not related to this plan
 
-Resolve both conditions before proceeding. Never start implementation on main/master branch without explicit user consent.
+Resolve both conditions before proceeding. Never start implementation on main/master branch without explicit user instruction.
 
 ## The Process
 
@@ -56,6 +56,10 @@ Verification output:
 Ready for feedback.
 ```
 
+**If Tests: failed > 0:**
+Do NOT mark tasks completed. Report the failure with exact test output.
+Load systematic-debugging skill. Do not proceed to next batch until failures are resolved.
+
 ### Step 4: Continue
 Based on feedback:
 - Apply changes if needed
@@ -66,6 +70,7 @@ Based on feedback:
 
 After all tasks complete and verified:
 - Announce: "I'm using the finishing-a-development-branch skill to complete this work."
+- Before loading: verify (a) all tasks are marked completed, (b) all tests pass, (c) no BLOCKERS.md is active.
 - **REQUIRED SUB-SKILL:** Load finishing-a-development-branch
 - Follow that skill to verify tests, present options, execute choice
 
@@ -79,7 +84,7 @@ After all tasks complete and verified:
 
 **Ask for clarification rather than guessing.**
 
-**If human is unavailable after a STOP:**
+**If the session ends without human response, or if 2 or more messages have passed without acknowledgment of the STOP:**
 1. Document the blocking question in a `BLOCKERS.md` file
 2. Mark the plan task as 'blocked'
 3. Skip to the next non-dependent task if one exists
@@ -107,3 +112,12 @@ After all tasks complete and verified:
 **Required workflow skills:**
 - **writing-plans** - Creates the plan this skill executes
 - **finishing-a-development-branch** - Complete development after all tasks
+
+## Completion State
+
+The session is complete when:
+- All plan tasks are marked completed
+- Final batch report shows zero test failures
+- finishing-a-development-branch skill has been loaded and executed
+
+Announce: "Plan execution complete. All [N] tasks finished. Branch ready for review."

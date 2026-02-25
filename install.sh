@@ -22,6 +22,11 @@ log()   { echo -e "${GREEN}[liftoff]${NC} $1"; }
 warn()  { echo -e "${YELLOW}[liftoff]${NC} $1"; }
 error() { echo -e "${RED}[liftoff]${NC} $1" >&2; exit 1; }
 
+# Check for partial install
+if [ -f "$HOME/.gemini/antigravity/.liftoff-installed" ]; then
+  warn "Previous install detected. Re-running will overwrite existing skills/workflows/agents."
+fi
+
 command -v git >/dev/null 2>&1 || error "git is required but not installed"
 
 log "Installing Liftoff..."
@@ -77,3 +82,8 @@ echo "   6 agents   → $AGENTS_DIR"
 echo ""
 echo "Restart Antigravity and type /brainstorm to get started."
 echo ""
+
+# Write manifest only on complete successful install
+MANIFEST_FILE="$HOME/.gemini/antigravity/.liftoff-installed"
+echo "liftoff-version=1.0.0" > "$MANIFEST_FILE"
+echo "install-date=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$MANIFEST_FILE"
