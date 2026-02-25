@@ -26,7 +26,7 @@ Design doc: [not started | in progress | saved at path]
 ## Hard Gate
 
 STOP if user says "just build it" or "skip the design" — respond:
-"Liftoff requires design approval before implementation. This prevents wasted effort.
+"SuperAntigravity requires design approval before implementation. This prevents wasted effort.
 The design will take 10-15 minutes and saves hours of rework. Shall we continue?"
 
 ## Completion Criteria

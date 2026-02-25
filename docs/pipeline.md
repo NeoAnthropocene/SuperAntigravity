@@ -1,4 +1,4 @@
-# Liftoff Development Pipeline
+# SuperAntigravity Development Pipeline
 
 The complete brainstorm → plan → implement → review → ship chain.
 

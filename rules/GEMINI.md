@@ -1,6 +1,6 @@
-# Liftoff Skills
+# SuperAntigravity Skills
 
-You have liftoff installed — a complete workflow and specialist skills framework.
+You have superantigravity installed — a complete workflow and specialist skills framework.
 
 ## MANDATORY: Check Skills Before Acting
 

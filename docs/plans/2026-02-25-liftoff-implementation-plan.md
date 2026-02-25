@@ -1,8 +1,8 @@
-# Liftoff Framework Implementation Plan
+# SuperAntigravity Framework Implementation Plan
 
 > **For the agent:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** Build the Liftoff framework — a merged Superpowers + SuperClaude skills/workflows/agents package for Google Antigravity IDE, installable with one `curl | bash` command.
+**Goal:** Build the SuperAntigravity framework — a merged Superpowers + SuperClaude skills/workflows/agents package for Google Antigravity IDE, installable with one `curl | bash` command.
 
 **Architecture:** GEMINI.md bootstrap (always-on rules) + 19 skills (semantically triggered) + 16 workflows (slash commands) + 6 agents. Installer copies files into `~/.gemini/antigravity/` and appends to `~/.gemini/GEMINI.md`.
 
@@ -36,7 +36,7 @@ mkdir -p skills workflows agents rules docs/plans
 ```
 MIT License
 
-Copyright (c) 2026 Liftoff Contributors
+Copyright (c) 2026 SuperAntigravity Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -73,7 +73,7 @@ node_modules/
 cd "/Users/der.haken/Desktop/superpowers for antigravity"
 git init
 git add LICENSE .gitignore
-git commit -m "chore: initialize liftoff framework repository"
+git commit -m "chore: initialize superantigravity framework repository"
 ```
 
 Expected: git repo initialized, first commit created.
@@ -90,9 +90,9 @@ Expected: git repo initialized, first commit created.
 **Step 1: Write rules/GEMINI.md**
 
 ```markdown
-# Liftoff Skills
+# SuperAntigravity Skills
 
-You have liftoff installed — a complete workflow and specialist skills framework.
+You have superantigravity installed — a complete workflow and specialist skills framework.
 
 ## MANDATORY: Check Skills Before Acting
 
@@ -166,24 +166,24 @@ git commit -m "feat: add GEMINI.md bootstrap rules"
 
 ---
 
-### Task 3: Create skills/using-liftoff/SKILL.md
+### Task 3: Create skills/using-superantigravity/SKILL.md
 
 **Files:**
-- Create: `skills/using-liftoff/SKILL.md`
+- Create: `skills/using-superantigravity/SKILL.md`
 
 **Step 1: Write the bootstrap skill**
 
 ```markdown
 ---
-name: using-liftoff
+name: using-superantigravity
 description: Use when starting any conversation — establishes how to find and use skills, requiring skill check before ANY response including clarifying questions
 ---
 
-# Using Liftoff
+# Using SuperAntigravity
 
 ## Overview
 
-You have liftoff installed. Before any action, check if a skill applies.
+You have superantigravity installed. Before any action, check if a skill applies.
 Skills are loaded automatically in Antigravity when the task matches the description.
 
 <EXTREMELY-IMPORTANT>
@@ -241,8 +241,8 @@ Instructions say WHAT, not HOW. "Add X" or "Fix Y" doesn't mean skip workflows.
 **Step 2: Commit**
 
 ```bash
-git add skills/using-liftoff/
-git commit -m "feat: add using-liftoff bootstrap skill"
+git add skills/using-superantigravity/
+git commit -m "feat: add using-superantigravity bootstrap skill"
 ```
 
 ---
@@ -1929,16 +1929,16 @@ git commit -m "feat: add all specialist agents"
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Liftoff — Superpowers + SuperClaude for Google Antigravity
+# SuperAntigravity — Superpowers + SuperClaude for Google Antigravity
 # Install script
 
-REPO_URL="https://github.com/YOUR_USERNAME/liftoff"
+REPO_URL="https://github.com/YOUR_USERNAME/superantigravity"
 BRANCH="main"
 SKILLS_DIR="$HOME/.gemini/antigravity/skills"
 WORKFLOWS_DIR="$HOME/.gemini/antigravity/global_workflows"
 GEMINI_DIR="$HOME/.gemini"
 GEMINI_FILE="$GEMINI_DIR/GEMINI.md"
-LIFTOFF_MARKER="# Liftoff Skills"
+LIFTOFF_MARKER="# SuperAntigravity Skills"
 
 # Colors
 RED='\033[0;31m'
@@ -1946,22 +1946,22 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-log() { echo -e "${GREEN}[liftoff]${NC} $1"; }
-warn() { echo -e "${YELLOW}[liftoff]${NC} $1"; }
-error() { echo -e "${RED}[liftoff]${NC} $1" >&2; exit 1; }
+log() { echo -e "${GREEN}[superantigravity]${NC} $1"; }
+warn() { echo -e "${YELLOW}[superantigravity]${NC} $1"; }
+error() { echo -e "${RED}[superantigravity]${NC} $1" >&2; exit 1; }
 
 # Check dependencies
 command -v git >/dev/null 2>&1 || error "git is required but not installed"
 
-log "Installing Liftoff..."
+log "Installing SuperAntigravity..."
 
 # Create temp directory
 TMPDIR=$(mktemp -d)
 trap "rm -rf $TMPDIR" EXIT
 
 # Clone repo
-log "Downloading liftoff..."
-git clone --depth 1 --branch "$BRANCH" "$REPO_URL" "$TMPDIR/liftoff" 2>/dev/null \
+log "Downloading superantigravity..."
+git clone --depth 1 --branch "$BRANCH" "$REPO_URL" "$TMPDIR/superantigravity" 2>/dev/null \
   || error "Failed to clone repository. Check your internet connection."
 
 # Create target directories
@@ -1972,7 +1972,7 @@ mkdir -p "$GEMINI_DIR"
 
 # Install skills
 log "Installing skills..."
-for skill_dir in "$TMPDIR/liftoff/skills"/*/; do
+for skill_dir in "$TMPDIR/superantigravity/skills"/*/; do
   skill_name=$(basename "$skill_dir")
   if [ -f "$skill_dir/SKILL.md" ]; then
     mkdir -p "$SKILLS_DIR/$skill_name"
@@ -1983,18 +1983,18 @@ done
 
 # Install workflows
 log "Installing workflows..."
-for workflow_file in "$TMPDIR/liftoff/workflows"/*.md; do
+for workflow_file in "$TMPDIR/superantigravity/workflows"/*.md; do
   workflow_name=$(basename "$workflow_file")
   cp "$workflow_file" "$WORKFLOWS_DIR/$workflow_name"
   echo "  ✓ ${workflow_name%.md}"
 done
 
 # Install agents
-if [ -d "$TMPDIR/liftoff/agents" ]; then
+if [ -d "$TMPDIR/superantigravity/agents" ]; then
   AGENTS_DIR="$HOME/.gemini/antigravity/agents"
   mkdir -p "$AGENTS_DIR"
   log "Installing agents..."
-  for agent_file in "$TMPDIR/liftoff/agents"/*.md; do
+  for agent_file in "$TMPDIR/superantigravity/agents"/*.md; do
     agent_name=$(basename "$agent_file")
     cp "$agent_file" "$AGENTS_DIR/$agent_name"
     echo "  ✓ ${agent_name%.md}"
@@ -2004,19 +2004,19 @@ fi
 # Update GEMINI.md
 log "Updating ~/.gemini/GEMINI.md..."
 if [ -f "$GEMINI_FILE" ] && grep -q "$LIFTOFF_MARKER" "$GEMINI_FILE"; then
-  warn "Liftoff block already exists in GEMINI.md — skipping (run uninstall first to reinstall)"
+  warn "SuperAntigravity block already exists in GEMINI.md — skipping (run uninstall first to reinstall)"
 else
   # Add newline separator if file exists and is non-empty
   if [ -s "$GEMINI_FILE" ]; then
     echo "" >> "$GEMINI_FILE"
     echo "" >> "$GEMINI_FILE"
   fi
-  cat "$TMPDIR/liftoff/rules/GEMINI.md" >> "$GEMINI_FILE"
+  cat "$TMPDIR/superantigravity/rules/GEMINI.md" >> "$GEMINI_FILE"
   log "Bootstrap rules added to GEMINI.md"
 fi
 
 echo ""
-echo -e "${GREEN}✓ Liftoff installed successfully!${NC}"
+echo -e "${GREEN}✓ SuperAntigravity installed successfully!${NC}"
 echo ""
 echo "  19 skills   → ~/.gemini/antigravity/skills/"
 echo "  16 workflows → ~/.gemini/antigravity/global_workflows/"
@@ -2057,20 +2057,20 @@ SKILLS_DIR="$HOME/.gemini/antigravity/skills"
 WORKFLOWS_DIR="$HOME/.gemini/antigravity/global_workflows"
 AGENTS_DIR="$HOME/.gemini/antigravity/agents"
 GEMINI_FILE="$HOME/.gemini/GEMINI.md"
-LIFTOFF_MARKER="# Liftoff Skills"
+LIFTOFF_MARKER="# SuperAntigravity Skills"
 
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-log() { echo -e "${GREEN}[liftoff]${NC} $1"; }
-warn() { echo -e "${YELLOW}[liftoff]${NC} $1"; }
+log() { echo -e "${GREEN}[superantigravity]${NC} $1"; }
+warn() { echo -e "${YELLOW}[superantigravity]${NC} $1"; }
 
 echo "This will remove:"
 echo "  - $SKILLS_DIR"
 echo "  - $WORKFLOWS_DIR"
 echo "  - $AGENTS_DIR"
-echo "  - Liftoff block from $GEMINI_FILE"
+echo "  - SuperAntigravity block from $GEMINI_FILE"
 echo ""
 read -p "Continue? [y/N] " -n 1 -r
 echo ""
@@ -2079,8 +2079,8 @@ echo ""
 # Remove skills
 if [ -d "$SKILLS_DIR" ]; then
   log "Removing skills..."
-  # Only remove liftoff skills (leave any user-created skills)
-  for skill in using-liftoff brainstorming writing-plans executing-plans \
+  # Only remove superantigravity skills (leave any user-created skills)
+  for skill in using-superantigravity brainstorming writing-plans executing-plans \
     subagent-driven-development test-driven-development systematic-debugging \
     verification-before-completion requesting-code-review receiving-code-review \
     finishing-a-development-branch dispatching-parallel-agents writing-skills \
@@ -2119,18 +2119,18 @@ fi
 
 # Remove GEMINI.md block
 if [ -f "$GEMINI_FILE" ] && grep -q "$LIFTOFF_MARKER" "$GEMINI_FILE"; then
-  log "Removing Liftoff block from GEMINI.md..."
-  # Remove from the marker to end of liftoff section
+  log "Removing SuperAntigravity block from GEMINI.md..."
+  # Remove from the marker to end of superantigravity section
   # This uses awk to remove the block between the marker and the next ## section (or EOF)
   awk "/$LIFTOFF_MARKER/{found=1} found && /^## / && !/^$LIFTOFF_MARKER/{found=0} !found" \
     "$GEMINI_FILE" > "$GEMINI_FILE.tmp" && mv "$GEMINI_FILE.tmp" "$GEMINI_FILE"
-  log "Removed Liftoff block from GEMINI.md"
+  log "Removed SuperAntigravity block from GEMINI.md"
 else
-  warn "No Liftoff block found in GEMINI.md"
+  warn "No SuperAntigravity block found in GEMINI.md"
 fi
 
 echo ""
-echo -e "${GREEN}✓ Liftoff uninstalled.${NC}"
+echo -e "${GREEN}✓ SuperAntigravity uninstalled.${NC}"
 ```
 
 **Step 2: Make executable**
@@ -2158,7 +2158,7 @@ git commit -m "feat: add uninstall.sh"
 **Step 1: Write README.md**
 
 ```markdown
-# Liftoff
+# SuperAntigravity
 
 **Superpowers + SuperClaude, merged for Google Antigravity.**
 
@@ -2168,7 +2168,7 @@ Install once, works automatically.
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/liftoff/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/superantigravity/main/install.sh | bash
 ```
 
 Then restart Antigravity.
@@ -2266,7 +2266,7 @@ Every session → agent reads GEMINI.md → knows it has skills
 ## Uninstall
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/liftoff/main/uninstall.sh | bash
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/superantigravity/main/uninstall.sh | bash
 ```
 
 ## Credits
@@ -2337,7 +2337,7 @@ Expected: ~20+ commits showing each phase of work.
 | Phase | Tasks | Deliverables |
 |-------|-------|-------------|
 | 1: Scaffold | 1 | git repo, LICENSE, .gitignore |
-| 2: Bootstrap | 2 | rules/GEMINI.md, using-liftoff skill |
+| 2: Bootstrap | 2 | rules/GEMINI.md, using-superantigravity skill |
 | 3: Pipeline Skills | 12 | 12 Superpowers skills adapted |
 | 4: Specialist Skills | 5 | 5 new SuperClaude-style skills |
 | 5: Workflows | 7 | 16 slash command workflows |
@@ -2345,4 +2345,4 @@ Expected: ~20+ commits showing each phase of work.
 | 7: Install Scripts | 2 | install.sh, uninstall.sh |
 | 8: README | 2 | README.md, final verification |
 
-**Total: 33 tasks → complete Liftoff framework**
+**Total: 33 tasks → complete SuperAntigravity framework**

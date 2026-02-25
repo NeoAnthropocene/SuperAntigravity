@@ -1,4 +1,4 @@
-# Liftoff
+# SuperAntigravity
 
 **Superpowers + SuperClaude for Google Antigravity IDE.**
 
@@ -7,7 +7,7 @@ One install command. Works automatically. Complete AI-assisted development workf
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/liftoff/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/derHaken/SuperAntigravity/main/install.sh | bash
 ```
 
 Restart Antigravity. That's it.
@@ -84,7 +84,7 @@ Type `/` + command name in Antigravity:
 ## How It Works
 
 ```
-Install → GEMINI.md gets Liftoff bootstrap block (always-on)
+Install → GEMINI.md gets SuperAntigravity bootstrap block (always-on)
         → skills/ → ~/.gemini/antigravity/skills/
         → workflows/ → ~/.gemini/antigravity/global_workflows/
         → agents/ → ~/.gemini/antigravity/agents/
@@ -119,7 +119,7 @@ Session → Agent reads GEMINI.md → knows it has skills, must check them
 ## Uninstall
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/liftoff/main/uninstall.sh | bash
+curl -fsSL https://raw.githubusercontent.com/derHaken/SuperAntigravity/main/uninstall.sh | bash
 ```
 
 ## Credits

@@ -1,11 +1,11 @@
-# Liftoff Framework Design
+# SuperAntigravity Framework Design
 *Superpowers + SuperClaude, merged for Google Antigravity*
 
 Date: 2026-02-25
 
 ## Summary
 
-Liftoff is a unified workflow + specialist skills framework for Google Antigravity IDE, merging the best of Superpowers (workflow pipeline, TDD discipline, anti-rationalization) and SuperClaude (specialist commands, agents, explicit slash commands). Install with one command, works immediately.
+SuperAntigravity is a unified workflow + specialist skills framework for Google Antigravity IDE, merging the best of Superpowers (workflow pipeline, TDD discipline, anti-rationalization) and SuperClaude (specialist commands, agents, explicit slash commands). Install with one command, works immediately.
 
 ## Target Platform
 
@@ -29,7 +29,7 @@ No hooks system. Bootstrap is handled via GEMINI.md rules injection.
 ### File Structure
 
 ```
-liftoff/
+superantigravity/
 ├── install.sh
 ├── uninstall.sh
 ├── README.md
@@ -38,7 +38,7 @@ liftoff/
 │   └── GEMINI.md
 ├── skills/
 │   # Superpowers pipeline skills
-│   ├── using-liftoff/
+│   ├── using-superantigravity/
 │   ├── brainstorming/
 │   ├── writing-plans/
 │   ├── executing-plans/
@@ -88,19 +88,19 @@ liftoff/
 `rules/GEMINI.md` appended to `~/.gemini/GEMINI.md` on install:
 
 ```
-# Liftoff Skills
+# SuperAntigravity Skills
 
-You have liftoff skills installed. Before taking any action on a task,
+You have superantigravity skills installed. Before taking any action on a task,
 you MUST invoke the relevant skill. Check skills before clarifying questions,
 before writing code, before debugging, before everything.
 ```
 
-`skills/using-liftoff/SKILL.md` contains the full anti-rationalization table and skill directory (mirrors Superpowers' `using-superpowers` skill).
+`skills/using-superantigravity/SKILL.md` contains the full anti-rationalization table and skill directory (mirrors Superpowers' `using-superpowers` skill).
 
 ## Skills: 19 total
 
 ### Superpowers Pipeline (13)
-- using-liftoff, brainstorming, writing-plans, executing-plans
+- using-superantigravity, brainstorming, writing-plans, executing-plans
 - subagent-driven-development, test-driven-development
 - systematic-debugging, verification-before-completion
 - requesting-code-review, receiving-code-review
@@ -119,7 +119,7 @@ code-reviewer, backend-architect, frontend-architect, security-engineer, deep-re
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/[user]/liftoff/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/[user]/superantigravity/main/install.sh | bash
 ```
 
 Script behavior:

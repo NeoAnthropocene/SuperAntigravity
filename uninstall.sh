@@ -5,17 +5,17 @@ SKILLS_DIR="$HOME/.gemini/antigravity/skills"
 WORKFLOWS_DIR="$HOME/.gemini/antigravity/global_workflows"
 AGENTS_DIR="$HOME/.gemini/antigravity/agents"
 GEMINI_FILE="$HOME/.gemini/GEMINI.md"
-LIFTOFF_MARKER="# Liftoff Skills"
+LIFTOFF_MARKER="# SuperAntigravity Skills"
 
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-log()  { echo -e "${GREEN}[liftoff]${NC} $1"; }
-warn() { echo -e "${YELLOW}[liftoff]${NC} $1"; }
+log()  { echo -e "${GREEN}[superantigravity]${NC} $1"; }
+warn() { echo -e "${YELLOW}[superantigravity]${NC} $1"; }
 
 LIFTOFF_SKILLS=(
-  using-liftoff brainstorming writing-plans executing-plans
+  using-superantigravity brainstorming writing-plans executing-plans
   subagent-driven-development test-driven-development systematic-debugging
   verification-before-completion requesting-code-review receiving-code-review
   finishing-a-development-branch dispatching-parallel-agents writing-skills
@@ -33,7 +33,7 @@ LIFTOFF_AGENTS=(
   security-engineer deep-research system-architect
 )
 
-echo "This will remove Liftoff skills, workflows, agents, and the GEMINI.md block."
+echo "This will remove SuperAntigravity skills, workflows, agents, and the GEMINI.md block."
 read -p "Continue? [y/N] " -n 1 -r; echo ""
 [[ $REPLY =~ ^[Yy]$ ]] || { echo "Aborted."; exit 0; }
 
@@ -53,18 +53,18 @@ for agent in "${LIFTOFF_AGENTS[@]}"; do
 done
 
 if [ -f "$GEMINI_FILE" ] && grep -q "$LIFTOFF_MARKER" "$GEMINI_FILE"; then
-  log "Removing Liftoff block from GEMINI.md..."
+  log "Removing SuperAntigravity block from GEMINI.md..."
   python3 -c "
 import re, sys
 content = open('$GEMINI_FILE').read()
-# Remove the liftoff block (from marker to end or next major section)
-cleaned = re.sub(r'\n*# Liftoff Skills.*', '', content, flags=re.DOTALL).rstrip()
+# Remove the superantigravity block (from marker to end or next major section)
+cleaned = re.sub(r'\n*# SuperAntigravity Skills.*', '', content, flags=re.DOTALL).rstrip()
 open('$GEMINI_FILE', 'w').write(cleaned + '\n' if cleaned else '')
 print('  ✓ removed')
 "
 else
-  warn "No Liftoff block found in GEMINI.md"
+  warn "No SuperAntigravity block found in GEMINI.md"
 fi
 
 echo ""
-echo -e "${GREEN}✓ Liftoff uninstalled.${NC}"
+echo -e "${GREEN}✓ SuperAntigravity uninstalled.${NC}"

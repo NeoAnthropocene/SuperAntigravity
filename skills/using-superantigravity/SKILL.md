@@ -1,13 +1,13 @@
 ---
-name: using-liftoff
+name: using-superantigravity
 description: Use when starting any conversation — establishes how to find and use skills, requiring skill check before ANY response including clarifying questions
 ---
 
-# Using Liftoff
+# Using SuperAntigravity
 
 ## Overview
 
-You have liftoff installed. Before any action, check if a skill applies.
+You have superantigravity installed. Before any action, check if a skill applies.
 Skills are loaded automatically in Antigravity when the task matches the description.
 
 <EXTREMELY-IMPORTANT>
