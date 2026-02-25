@@ -2,7 +2,7 @@
 
 Code review against plan, requirements, and quality standards.
 
-Load requesting-code-review skill for the full process.
+Load code-reviewer agent for the full process.
 
 ## Review Checklist
 
@@ -23,10 +23,36 @@ Load requesting-code-review skill for the full process.
 - [ ] Any new endpoints missing authorization?
 
 ### Performance
-- [ ] Any obvious inefficiencies (N+1 queries, blocking I/O)?
+- [ ] Any N+1 queries (loop containing a database call)?
+- [ ] Any synchronous blocking I/O in an async context?
+- [ ] Any unbounded data fetching (missing LIMIT on queries)?
+- [ ] Any unnecessary re-computation inside loops?
 
 ## Issue Severity
 - **Critical**: Blocks shipping — security vulnerabilities, broken functionality
 - **High**: Should fix before shipping — significant quality issues
 - **Medium**: Fix soon — technical debt, missing tests
 - **Low**: Nice to have — style, minor improvements
+
+## Example Review Output
+
+```
+=== CODE REVIEW ===
+Task reviewed: [task N from plan]
+Reviewer: code-reviewer agent
+
+PLAN COMPLIANCE: PASS
+- All acceptance criteria met
+- No scope creep detected
+
+CODE QUALITY: 2 issues
+- MEDIUM: auth.js:45 — function is 87 lines, extract token validation to separate function
+- LOW: Missing error message context in catch block at user.js:102
+
+SECURITY: PASS (no auth/input handling changes)
+
+PERFORMANCE: PASS
+
+OVERALL: APPROVED WITH SUGGESTIONS
+Blocker count: 0 | Suggestions: 2
+```

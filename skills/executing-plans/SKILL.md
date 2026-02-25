@@ -13,6 +13,14 @@ Load plan, review critically, execute tasks in batches, report for review betwee
 
 **Announce at start:** "I'm using the executing-plans skill to implement this plan."
 
+## Step 0: Prerequisites
+
+**STOP if:**
+- (a) You are on main or master branch without explicit user instruction
+- (b) There are uncommitted changes not related to this plan
+
+Resolve both conditions before proceeding. Never start implementation on main/master branch without explicit user consent.
+
 ## The Process
 
 ### Step 1: Load and Review Plan
@@ -22,7 +30,11 @@ Load plan, review critically, execute tasks in batches, report for review betwee
 4. If no concerns: Create TodoWrite and proceed
 
 ### Step 2: Execute Batch
-**Default: First 3 tasks**
+
+**Batch size criteria:**
+- Default batch: 3 tasks
+- Shrink to 1 task if: first task in a new phase, or previous batch had failures
+- Expand to 5 tasks if: all tasks are mechanical (file copies, config changes) with no logic
 
 For each task:
 1. Mark as in_progress
@@ -31,10 +43,18 @@ For each task:
 4. Mark as completed
 
 ### Step 3: Report
-When batch complete:
-- Show what was implemented
-- Show verification output
-- Say: "Ready for feedback."
+
+When batch complete, use this template:
+
+```
+## Batch Report
+Tasks completed: [N-M]
+Files changed: [list]
+Tests: [passed X / failed Y / skipped Z]
+Verification output:
+  [paste exact command output]
+Ready for feedback.
+```
 
 ### Step 4: Continue
 Based on feedback:
@@ -59,6 +79,12 @@ After all tasks complete and verified:
 
 **Ask for clarification rather than guessing.**
 
+**If human is unavailable after a STOP:**
+1. Document the blocking question in a `BLOCKERS.md` file
+2. Mark the plan task as 'blocked'
+3. Skip to the next non-dependent task if one exists
+4. If no tasks are unblocked, leave a clear status note and stop
+
 ## When to Revisit Earlier Steps
 
 **Return to Review (Step 1) when:**
@@ -68,13 +94,13 @@ After all tasks complete and verified:
 **Don't force through blockers** - stop and ask.
 
 ## Remember
+- Complete Step 0 prerequisites before anything else
 - Review plan critically first
 - Follow plan steps exactly
 - Don't skip verifications
 - Reference skills when plan says to
 - Between batches: just report and wait
 - Stop when blocked, don't guess
-- Never start implementation on main/master branch without explicit user consent
 
 ## Integration
 

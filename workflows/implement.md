@@ -1,21 +1,50 @@
-# Implement
+# /implement
 
-Feature implementation workflow.
+**What this does:** Orchestrates feature implementation through TDD with review gates.
 
-## Before Writing Code
-1. Run confidence-check skill — score must be 27+ to proceed
-2. If starting a new feature, load brainstorming skill first
-3. If a plan exists, load executing-plans skill
+**Prerequisites:**
+- Design approved (docs/plans/*-design.md exists) — if not, run /brainstorm first
+- Implementation plan exists (docs/plans/*-plan.md) — if not, run /plan first
+- On a feature branch (not main/master)
 
-## Implementation Protocol
-1. Load test-driven-development skill — write failing test first, always
-2. Write minimal code to make the test pass
-3. Refactor only after tests are green
-4. Commit after each passing test
+## Orchestration Flow
 
-## After Each Task
-Load requesting-code-review skill to review against the plan.
+```
+confidence-check skill → score ≥ 27 required to proceed
+         ↓
+test-driven-development skill → RED phase (write failing test)
+         ↓
+minimal implementation
+         ↓
+test-driven-development skill → GREEN phase (make it pass)
+         ↓
+commit
+         ↓
+requesting-code-review skill → review against plan
+         ↓
+next task (repeat)
+         ↓
+verification-before-completion skill → final check
+         ↓
+finishing-a-development-branch skill → merge/PR decision
+```
 
-## Completion
-Load verification-before-completion skill before declaring done.
-Load finishing-a-development-branch skill when all tasks complete.
+## Session Announcement
+
+At start: "Starting /implement for [task/feature]. Loading confidence-check..."
+
+## On Confidence Below 27
+
+Announce: "Confidence check failed: [dimension] scored [X].
+Gap: [specific unknown].
+Action: [reading files | running research | asking user]"
+Do not start implementing until score reaches 27+.
+
+## On Test Failure After Implementation
+
+Load systematic-debugging skill. Do NOT retry without diagnosis.
+
+## Commit Cadence
+
+Commit after every GREEN test. Message format: `test: [what behavior is now tested]`
+Never accumulate more than one GREEN test before committing.

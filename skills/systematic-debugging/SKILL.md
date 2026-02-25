@@ -86,7 +86,7 @@ You MUST complete each phase before proceeding to the next.
    THEN investigate that specific component
    ```
 
-   **Example (multi-layer system):**
+   **Example — multi-layer CI/build system:**
    ```bash
    # Layer 1: Workflow
    echo "=== Secrets available in workflow: ==="
@@ -107,17 +107,29 @@ You MUST complete each phase before proceeding to the next.
 
    **This reveals:** Which layer fails (secrets → workflow ✓, workflow → build ✗)
 
+   **Example — web application (POST /api/login returns 500 on valid credentials):**
+   Trace through the request handler to find where the 500 originates, then follow into the auth service to check credential validation logic, then follow into the database query to verify the user lookup returns the expected row and that password comparison is correct.
+
+   **Example — database performance (query takes 30s instead of <100ms):**
+   Profile the query with EXPLAIN ANALYZE (or equivalent), check whether relevant indexes exist and are being used, examine the query plan for sequential scans on large tables, and verify that query parameters are not causing implicit type casts that prevent index use.
+
 5. **Trace Data Flow**
 
    **WHEN error is deep in call stack:**
 
-   See `root-cause-tracing.md` in this directory for the complete backward tracing technique.
+   To trace root cause: start at the error line, follow the call stack upward, note each function's inputs and outputs until you find where expected behavior diverges from actual behavior.
 
    **Quick version:**
    - Where does bad value originate?
    - What called this with bad value?
    - Keep tracing up until you find the source
    - Fix at source, not at symptom
+
+**Phase 1 is complete when you have written:**
+
+> "The bug is: [observable behavior]. Expected: [correct behavior]. First occurrence: [specific file:line or event]. Possible cause: [one hypothesis]."
+
+You cannot proceed to Phase 2 until you have written this statement.
 
 ### Phase 2: Pattern Analysis
 
@@ -259,7 +271,7 @@ If you catch yourself thinking:
 
 | Phase | Key Activities | Success Criteria |
 |-------|---------------|------------------|
-| **1. Root Cause** | Read errors, reproduce, check changes, gather evidence | Understand WHAT and WHY |
+| **1. Root Cause** | Read errors, reproduce, check changes, gather evidence | Written statement: "The bug is: [observable behavior]. Expected: [correct behavior]. First occurrence: [specific file:line or event]. Possible cause: [one hypothesis]." |
 | **2. Pattern** | Find working examples, compare | Identify differences |
 | **3. Hypothesis** | Form theory, test minimally | Confirmed or new hypothesis |
 | **4. Implementation** | Create test, fix, verify | Bug resolved, tests pass |
@@ -277,11 +289,11 @@ If systematic investigation reveals issue is truly environmental, timing-depende
 
 ## Supporting Techniques
 
-These techniques are part of systematic debugging and available in this directory:
+These techniques support systematic debugging:
 
-- **`root-cause-tracing.md`** - Trace bugs backward through call stack to find original trigger
-- **`defense-in-depth.md`** - Add validation at multiple layers after finding root cause
-- **`condition-based-waiting.md`** - Replace arbitrary timeouts with condition polling
+- **Trace root cause** - Start at the error line, follow the call stack upward, note each function's inputs and outputs until you find where expected behavior diverges from actual behavior.
+- **Add validation at multiple layers** - After finding root cause, add defensive checks at each component boundary to catch similar issues earlier in future.
+- **Replace arbitrary timeouts with condition polling** - When waiting for async state, poll the condition with a timeout rather than sleeping a fixed duration.
 
 **Related skills:**
 - **test-driven-development** - For creating failing test case (Phase 4, Step 1)

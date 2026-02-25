@@ -13,11 +13,19 @@ Start by understanding the current project context, then ask questions one at a 
 
 <HARD-GATE>
 Do NOT invoke any implementation skill, write any code, scaffold any project, or take any implementation action until you have presented a design and the user has approved it. This applies to EVERY project regardless of perceived simplicity.
+
+Announce: "Design HARD-GATE: I will not write code or scaffold files until you approve this design."
+
+An implementation action is: writing any file that will be part of the product (src/, lib/, app/), running npm init/create-*, generating scaffolding.
 </HARD-GATE>
 
 ## Anti-Pattern: "This Is Too Simple To Need A Design"
 
 Every project goes through this process. A todo list, a single-function utility, a config change — all of them. "Simple" projects are where unexamined assumptions cause the most wasted work. The design can be short (a few sentences for truly simple projects), but you MUST present it and get approval.
+
+## Greenfield Projects
+
+If the project has no existing files: skip the "Explore project context" step, start directly with clarifying questions, and create the `docs/` directory as the first implementation action after approval.
 
 ## Checklist
 
@@ -39,6 +47,7 @@ digraph brainstorming {
     "Propose 2-3 approaches" [shape=box];
     "Present design sections" [shape=box];
     "User approves design?" [shape=diamond];
+    "Incorporate modifications, re-present changed section" [shape=box];
     "Write design doc" [shape=box];
     "Load writing-plans skill" [shape=doublecircle];
 
@@ -47,6 +56,8 @@ digraph brainstorming {
     "Propose 2-3 approaches" -> "Present design sections";
     "Present design sections" -> "User approves design?";
     "User approves design?" -> "Present design sections" [label="no, revise"];
+    "User approves design?" -> "Incorporate modifications, re-present changed section" [label="approved with modifications"];
+    "Incorporate modifications, re-present changed section" -> "Write design doc";
     "User approves design?" -> "Write design doc" [label="yes"];
     "Write design doc" -> "Load writing-plans skill";
 }
@@ -63,6 +74,8 @@ digraph brainstorming {
 - Only one question per message - if a topic needs more exploration, break it into multiple questions
 - Focus on understanding: purpose, constraints, success criteria
 
+**Termination criterion for clarifying questions:** Ask clarifying questions until: (a) you can restate the goal in one sentence, (b) you know the top constraint, (c) you understand the success criteria. Stop at 3-5 questions unless complexity demands more.
+
 **Exploring approaches:**
 - Propose 2-3 different approaches with trade-offs
 - Present options conversationally with your recommendation and reasoning
@@ -74,6 +87,10 @@ digraph brainstorming {
 - Ask after each section whether it looks right so far
 - Cover: architecture, components, data flow, error handling, testing
 - Be ready to go back and clarify if something doesn't make sense
+
+**Handling partial approval:**
+- If the user approves with modifications: incorporate the modifications, re-present the changed section only, then proceed
+- Do not re-present unchanged sections
 
 ## After the Design
 

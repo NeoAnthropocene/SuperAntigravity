@@ -356,10 +356,10 @@ Never fix bugs without a test.
 
 ## Testing Anti-Patterns
 
-When adding mocks or test utilities, read @testing-anti-patterns.md to avoid common pitfalls:
-- Testing mock behavior instead of real behavior
-- Adding test-only methods to production classes
-- Mocking without understanding dependencies
+When adding mocks or test utilities, avoid these common pitfalls:
+- Testing mock behavior instead of real behavior (mocks should stand in for dependencies, not be the subject of the test)
+- Adding test-only methods to production classes (if you need a hook for testing, the design is coupled — use dependency injection instead)
+- Mocking without understanding dependencies (read the real implementation before mocking it; wrong mock = wrong test)
 
 ## Final Rule
 

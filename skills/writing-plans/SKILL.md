@@ -19,12 +19,18 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 
 ## Bite-Sized Task Granularity
 
-**Each step is one action (2-5 minutes):**
-- "Write the failing test" - step
-- "Run it to make sure it fails" - step
-- "Implement the minimal code to make the test pass" - step
-- "Run the tests and make sure they pass" - step
-- "Commit" - step
+**Each step produces exactly one artifact: a written test, a passing test run output, a code file, a commit. If a step produces two artifacts, split it.**
+
+Examples:
+- "Write the failing test" - step (artifact: test file)
+- "Run it to make sure it fails" - step (artifact: test run output)
+- "Implement the minimal code to make the test pass" - step (artifact: code file)
+- "Run the tests and make sure they pass" - step (artifact: passing test run output)
+- "Commit" - step (artifact: commit)
+
+## Path Convention
+
+For files that don't exist yet, use paths based on the project's existing naming convention. If no convention exists, document the path convention you're using at the top of the plan.
 
 ## Plan Document Header
 
@@ -87,6 +93,16 @@ git commit -m "feat: add specific feature"
 ```
 ````
 
+## Plan Validation
+
+Before handing the plan to execution: read it from the perspective of an engineer who has never seen this codebase. Does every task have enough context to start without asking questions? If not, add it.
+
+Checklist:
+- Every file path is exact and follows the documented convention
+- Every command includes expected output
+- Every task's purpose is clear from its name and description alone
+- No task assumes knowledge of a prior conversation or undocumented context
+
 ## Remember
 - Exact file paths always
 - Complete code in plan (not "add validation")
@@ -107,7 +123,7 @@ After saving the plan, offer execution choice:
 **Which approach?"**
 
 **If Subagent-Driven chosen:**
-- **REQUIRED SUB-SKILL:** Load subagent-driven-development
+- **REQUIRED SUB-SKILL:** Load executing-plans
 - Stay in this session
 - Fresh subagent per task + code review
 
