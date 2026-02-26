@@ -44,6 +44,7 @@ Skills fire automatically when your task context matches — no commands needed.
 | `security-review` | Code touches auth, input handling, or sensitive data |
 | `architecture-design` | Designing systems, APIs, or significant features |
 | `confidence-check` | About to implement — verifies readiness |
+| `browser-agent` | Testing UI flows, verifying web app behavior, browser automation |
 
 ### 16 Slash Commands
 
