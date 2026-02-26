@@ -62,3 +62,14 @@ Type `/` followed by any of these names to trigger explicit workflows:
 | /cleanup | Remove dead code, optimize structure |
 | /document | Generate documentation |
 | /estimate | Development estimates |
+
+## Specialist Skills
+
+| Skill | When to use |
+|-------|-------------|
+| `deep-research` | Task needs external information before proceeding |
+| `performance-optimization` | Code needs profiling and optimization |
+| `security-review` | Code touches auth, input handling, or sensitive data |
+| `architecture-design` | Designing systems, APIs, or significant features |
+| `confidence-check` | About to implement — verifies readiness |
+| `browser-agent` | Interacting with web browser, testing UI flows, verifying web app behavior |
