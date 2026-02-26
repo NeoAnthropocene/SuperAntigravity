@@ -1,5 +1,6 @@
 ---
-description: Executes the implement workflow.
+name: implement
+description: Orchestrates feature implementation through TDD with review gates.
 ---
 # /implement
 

@@ -1,5 +1,6 @@
 ---
-description: Executes the troubleshoot workflow.
+name: troubleshoot
+description: Orchestrates systematic debugging sessions.
 ---
 # /troubleshoot
 

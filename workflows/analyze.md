@@ -1,5 +1,6 @@
 ---
-description: Executes the analyze workflow.
+name: analyze
+description: description: Executes the analyze workflow.
 ---
 # Analyze
 

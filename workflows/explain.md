@@ -1,5 +1,6 @@
 ---
-description: Executes the explain workflow.
+name: explain
+description: description: Executes the explain workflow.
 ---
 # Explain
 

@@ -1,5 +1,6 @@
 ---
-description: Executes the brainstorm workflow.
+name: brainstorm
+description: Requirements discovery before any code — turns vague ideas into approved designs.
 ---
 # /brainstorm
 

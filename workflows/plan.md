@@ -1,5 +1,6 @@
 ---
-description: Executes the plan workflow.
+name: plan
+description: description: Executes the plan workflow.
 ---
 # Plan
 
