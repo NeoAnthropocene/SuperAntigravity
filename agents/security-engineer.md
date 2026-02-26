@@ -1,6 +1,6 @@
 ---
 name: security-engineer
-description: Use when reviewing code for vulnerabilities, designing authentication systems, evaluating security trade-offs, or when any feature touches authentication, authorization, or sensitive data.
+description: name: security-engineer
 ---
 
 # Security Engineer

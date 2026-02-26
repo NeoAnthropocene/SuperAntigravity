@@ -1,6 +1,6 @@
 ---
 name: deep-research
-description: Use when a task requires comprehensive external research, comparing technologies, validating approaches against current best practices, or gathering information from multiple sources before making decisions.
+description: name: deep-research
 ---
 
 # Deep Research Agent

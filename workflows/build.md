@@ -1,6 +1,6 @@
 ---
 name: build
-description: description: Executes the build workflow.
+description: name: build
 ---
 # Build
 

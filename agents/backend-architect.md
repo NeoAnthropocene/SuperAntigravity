@@ -1,6 +1,6 @@
 ---
 name: backend-architect
-description: Use when designing backend systems, APIs, databases, or server-side architecture. Specializes in reliability, scalability, and data modeling.
+description: name: backend-architect
 ---
 
 # Backend Architect

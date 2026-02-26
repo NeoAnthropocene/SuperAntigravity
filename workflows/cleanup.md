@@ -1,6 +1,6 @@
 ---
 name: cleanup
-description: description: Executes the cleanup workflow.
+description: name: cleanup
 ---
 # Cleanup
 

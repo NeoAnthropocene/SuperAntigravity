@@ -1,6 +1,6 @@
 ---
 name: document
-description: description: Executes the document workflow.
+description: name: document
 ---
 # Document
 

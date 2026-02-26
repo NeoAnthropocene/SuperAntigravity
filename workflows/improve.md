@@ -1,6 +1,6 @@
 ---
 name: improve
-description: description: Executes the improve workflow.
+description: name: improve
 ---
 # Improve
 

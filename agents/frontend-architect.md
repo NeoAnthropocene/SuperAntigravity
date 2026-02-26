@@ -1,6 +1,6 @@
 ---
 name: frontend-architect
-description: Use when designing frontend applications, UI component systems, state management, or client-side architecture. Specializes in user experience, performance, and maintainability.
+description: name: frontend-architect
 ---
 
 # Frontend Architect

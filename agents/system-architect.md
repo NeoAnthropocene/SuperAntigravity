@@ -1,6 +1,6 @@
 ---
 name: system-architect
-description: Use when designing distributed systems, evaluating system-wide architectural decisions, planning technical migrations, or making decisions that affect multiple services or teams.
+description: name: system-architect
 ---
 
 # System Architect

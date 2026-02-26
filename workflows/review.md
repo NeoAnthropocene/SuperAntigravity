@@ -1,6 +1,6 @@
 ---
 name: review
-description: description: Executes the review workflow.
+description: name: review
 ---
 # Review
 

@@ -1,6 +1,6 @@
 ---
 name: estimate
-description: description: Executes the estimate workflow.
+description: name: estimate
 ---
 # Estimate
 

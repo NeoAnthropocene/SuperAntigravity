@@ -1,6 +1,6 @@
 ---
 name: test
-description: description: Executes the test workflow.
+description: name: test
 ---
 # Test
 

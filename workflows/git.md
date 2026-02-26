@@ -1,6 +1,6 @@
 ---
 name: git
-description: description: Executes the git workflow.
+description: name: git
 ---
 # Git
 

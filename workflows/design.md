@@ -1,6 +1,6 @@
 ---
 name: design
-description: description: Executes the design workflow.
+description: name: design
 ---
 # Design
 
