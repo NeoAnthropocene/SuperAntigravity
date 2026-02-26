@@ -32,9 +32,12 @@ Before any browser task, verify:
    127.0.0.1
    staging.myapp.com
    ```
+   Add both `localhost` and `127.0.0.1` if the app may be accessed under either hostname.
    The browser agent will refuse to access domains not on this list.
 
-Announce prerequisites status before starting: "Chrome extension: ✓ / ✗  |  Allowlist: ✓ domain added / ✗ needs update"
+Before starting, state the prerequisite status in this format:
+"Chrome extension: [installed / NOT installed]  |  Allowlist: [domain confirmed / domain NOT listed]"
+If either check fails, stop and follow the relevant Error Path below before proceeding.
 
 ## When to Use the Browser Agent
 
@@ -78,7 +81,7 @@ The browser subagent can execute:
 | Screenshot | "Take a screenshot of the current state" |
 | Read console | "Check the browser console for errors" |
 | Execute JS | "Execute document.title and return the result" |
-| Record | "Record this session as a video artifact" |
+| Record | "Start recording before the first action; stop recording after the final step" |
 
 ## Artifacts
 
@@ -111,6 +114,7 @@ Unacceptable:
 2. Compare actual vs expected
 3. Report the discrepancy with the screenshot as evidence
 4. Do NOT claim success if the expected state was not reached
+5. Stop and surface the failure to the user with the screenshot. Do NOT retry automatically without user confirmation.
 
 **Browser agent timeout:**
 > "Browser agent timed out. Simplify the request into smaller steps and retry one step at a time."
@@ -144,7 +148,7 @@ A task that ends with "it should be working" is not complete.
 
 **Correct execution:**
 
-1. Announce prerequisites: "Chrome extension: ✓ | Adding localhost to allowlist..."
+1. Announce prerequisites: "Chrome extension: installed | Allowlist: domain NOT listed — adding localhost and 127.0.0.1 now..."
 2. Add `localhost` and `127.0.0.1` to `~/.gemini/antigravity/browserAllowlist.txt`
 3. Delegate to browser agent with precise steps:
    - Navigate to `http://localhost:3000/login`
