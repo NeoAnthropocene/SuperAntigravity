@@ -66,6 +66,8 @@ The browser agent responds to precise, stepwise instructions. Vague requests pro
 2. Each action in sequence (click X, type Y in Z, scroll to W)
 3. The expected end state (URL, visible text, element present/absent)
 
+**Selector strategy:** Prefer visible labels and text over CSS selectors — labels are more resilient to DOM changes. Use `"Click the button labeled 'Submit'"` rather than `"Click button#submit-btn"`.
+
 ## Supported Actions
 
 The browser subagent can execute:
@@ -80,7 +82,7 @@ The browser subagent can execute:
 | Read DOM | "Read the text content of the h1 element" |
 | Screenshot | "Take a screenshot of the current state" |
 | Read console | "Check the browser console for errors" |
-| Execute JS | "Execute document.title and return the result" |
+| Execute JS | "Execute document.title and return the result" — read-only operations only; do not mutate auth state, exfiltrate cookies, or execute untrusted input |
 | Record | "Start recording before the first action; stop recording after the final step" |
 
 ## Artifacts
@@ -117,7 +119,7 @@ Unacceptable:
 5. Stop and surface the failure to the user with the screenshot. Do NOT retry automatically without user confirmation.
 
 **Browser agent timeout:**
-> "Browser agent timed out. Simplify the request into smaller steps and retry one step at a time."
+> "Browser agent timed out. Simplify the request into smaller steps and retry once. If it times out again, stop and escalate to the user."
 
 ## Completion Criteria
 
