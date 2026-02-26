@@ -10,6 +10,7 @@ description: Orchestrates feature implementation through TDD with review gates.
 - Design approved (docs/plans/*-design.md exists) — if not, run /brainstorm first
 - Implementation plan exists (docs/plans/*-plan.md) — if not, run /plan first
 - On a feature branch (not main/master)
+- **Fast Mode** active in Antigravity settings
 
 **Skill dependencies:** This workflow uses: confidence-check, test-driven-development, systematic-debugging, requesting-code-review, verification-before-completion, finishing-a-development-branch (all in skills/).
 

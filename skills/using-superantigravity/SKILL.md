@@ -127,6 +127,17 @@ These thoughts mean STOP — you're rationalizing:
 | "I know what that means" | Knowing the concept ≠ using the skill. Load it. |
 | "I already announced it last time" | Announce it every time. Each response is a new check. |
 
+## Conversation Modes
+
+Antigravity has two primary **Conversation Modes**. You MUST ensure the user has the correct mode selected for the phase of work:
+
+1. **Planning Mode**: Use for research, complex tasks, architecture, and collaborative design work.
+2. **Fast Mode**: Use for direct execution, simple tasks, and repetitive implementation steps after the plan is approved.
+
+**Rule:** If you are in a process skill (Brainstorming, Planning, Research, Debugging), you SHOULD be in **Planning Mode**. If you are in an execution skill (Implementation, TDD, Executing Plans), you SHOULD be in **Fast Mode**.
+
+If the current mode doesn't match the work phase, prompt the user: *"I am starting a [Planning/Execution] phase. Please switch to [Planning/Fast] mode in the conversation settings for optimal performance."*
+
 ## User Instructions
 
 Instructions say WHAT, not HOW. "Add X" or "Fix Y" doesn't mean skip workflows.

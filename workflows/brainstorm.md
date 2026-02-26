@@ -8,6 +8,7 @@ description: Requirements discovery before any code — turns vague ideas into a
 
 **When to use:** Before starting any new feature, component, or significant change.
 When NOT to use: If design is already approved and documented — use /plan instead.
+- **Planning Mode** active in Antigravity settings
 
 ## Orchestration
 
