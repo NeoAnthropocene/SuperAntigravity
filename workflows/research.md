@@ -1,3 +1,6 @@
+---
+description: Executes the research workflow.
+---
 # /research
 
 **What this does:** Multi-source research before acting on unknowns. Produces sourced findings with confidence levels ready for downstream use.

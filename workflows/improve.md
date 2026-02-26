@@ -1,3 +1,6 @@
+---
+description: Executes the improve workflow.
+---
 # Improve
 
 Apply systematic improvements to code quality, performance, and maintainability.

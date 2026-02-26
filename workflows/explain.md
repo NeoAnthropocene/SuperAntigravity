@@ -1,3 +1,6 @@
+---
+description: Executes the explain workflow.
+---
 # Explain
 
 Clear explanations of code, concepts, and system behavior.

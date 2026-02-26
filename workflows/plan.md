@@ -1,3 +1,6 @@
+---
+description: Executes the plan workflow.
+---
 # Plan
 
 Load and follow the writing-plans skill exactly.

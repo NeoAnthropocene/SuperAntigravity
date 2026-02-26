@@ -1,3 +1,6 @@
+---
+description: Executes the analyze workflow.
+---
 # Analyze
 
 Comprehensive code analysis across quality, security, performance, and architecture.

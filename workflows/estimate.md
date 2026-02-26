@@ -1,3 +1,6 @@
+---
+description: Executes the estimate workflow.
+---
 # Estimate
 
 Development estimates for tasks, features, or projects.

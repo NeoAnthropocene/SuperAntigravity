@@ -1,3 +1,6 @@
+---
+description: Executes the git workflow.
+---
 # Git
 
 Git operations with intelligent commit messages.

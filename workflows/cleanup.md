@@ -1,3 +1,6 @@
+---
+description: Executes the cleanup workflow.
+---
 # Cleanup
 
 Remove dead code, unused imports, and optimize project structure.

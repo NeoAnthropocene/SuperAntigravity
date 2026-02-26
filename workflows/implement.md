@@ -1,3 +1,6 @@
+---
+description: Executes the implement workflow.
+---
 # /implement
 
 **What this does:** Orchestrates feature implementation through TDD with review gates.

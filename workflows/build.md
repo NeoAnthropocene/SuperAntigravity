@@ -1,3 +1,6 @@
+---
+description: Executes the build workflow.
+---
 # Build
 
 Build, compile, and package the project.

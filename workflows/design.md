@@ -1,3 +1,6 @@
+---
+description: Executes the design workflow.
+---
 # Design
 
 System architecture, API, and component design.
