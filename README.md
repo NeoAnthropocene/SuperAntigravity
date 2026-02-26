@@ -68,6 +68,9 @@ Type `/` + command name in Antigravity:
 | `/cleanup` | Remove dead code |
 | `/document` | Generate documentation |
 | `/estimate` | Development estimates |
+| `/business-panel` | AI-facilitated panel discussion with business thought leaders |
+| `/spec-panel` | Multi-expert review of technical specification quality |
+| `/recommend` | Intelligent recommender for SuperAntigravity commands |
 
 > Each command is backed by a workflow file in `~/.gemini/antigravity/global_workflows/` — you can inspect and customize them.
 
@@ -81,6 +84,8 @@ Type `/` + command name in Antigravity:
 | `security-engineer` | Vulnerability review, auth design, threat modeling |
 | `deep-research` | Multi-source research with source quality ranking |
 | `system-architect` | Distributed systems, migrations, observability |
+| `socratic-mentor` | Educational guide for Socratic discovery learning |
+| `repo-index` | Repository context compression and indexing |
 
 ## How It Works
 
@@ -94,6 +99,13 @@ Session → Agent reads GEMINI.md → knows it has skills, must check them
         → Skills trigger automatically by description matching
         → /commands available explicitly via workflows
 ```
+
+## ⚡ Conversation Modes
+
+SuperAntigravity is optimized for Antigravity's native mode toggles:
+
+- **Planning Mode**: Mandatory for `/brainstorm`, `/plan`, `/research`, and `/troubleshoot`. Use for deep thinking, design, and complex problem isolation.
+- **Fast Mode**: Recommended for `/implement`, `/test`, and batch execution. Optimized for direct code generation and mechanical tasks.
 
 ## The Workflow
 
