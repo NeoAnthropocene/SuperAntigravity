@@ -65,6 +65,10 @@ are architectural. The architecture-design skill governs option evaluation and t
 **Then:** Load deep-research skill. Reason: Comparing options requires gathering information
 before making a recommendation. The deep-research skill governs how to do this rigorously.
 
+**Given:** User says "Test the checkout flow on the staging site" or "Click through the signup form" or "Verify the UI after this deploy"
+**Then:** Load browser-agent skill. Reason: Interacting with a live web page requires the browser
+subagent. The browser-agent skill governs prerequisites, request framing, and completion criteria.
+
 ## Skill Priority
 
 1. **Process skills first** (brainstorming, systematic-debugging) — HOW to approach the task
