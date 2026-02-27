@@ -7,7 +7,7 @@ One install command. Works automatically. Complete AI-assisted development workf
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/derHaken/SuperAntigravity/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/neoanthropocene/SuperAntigravity/main/install.sh | bash
 ```
 
 Restart Antigravity. That's it.
@@ -132,7 +132,7 @@ SuperAntigravity is optimized for Antigravity's native mode toggles:
 ## Uninstall
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/derHaken/SuperAntigravity/main/uninstall.sh | bash
+curl -fsSL https://raw.githubusercontent.com/neoanthropocene/SuperAntigravity/main/uninstall.sh | bash
 ```
 
 ## Credits
