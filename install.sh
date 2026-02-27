@@ -4,7 +4,7 @@ set -euo pipefail
 # SuperAntigravity — Superpowers + SuperClaude for Google Antigravity
 # https://github.com/derHaken/SuperAntigravity
 
-REPO_URL="https://github.com/derHaken/SuperAntigravity"
+REPO_URL="https://github.com/neoanthropocene/SuperAntigravity"
 BRANCH="main"
 SKILLS_DIR="$HOME/.gemini/antigravity/skills"
 WORKFLOWS_DIR="$HOME/.gemini/antigravity/global_workflows"
