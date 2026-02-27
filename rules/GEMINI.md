@@ -73,3 +73,4 @@ Type `/` followed by any of these names to trigger explicit workflows:
 | `architecture-design` | Designing systems, APIs, or significant features |
 | `confidence-check` | About to implement — verifies readiness |
 | `browser-agent` | Interacting with web browser, testing UI flows, verifying web app behavior |
+| `dependency-management` | Adding, updating, auditing, or evaluating project dependencies |
