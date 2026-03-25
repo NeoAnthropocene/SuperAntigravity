@@ -3,38 +3,38 @@
 The complete brainstorm → plan → implement → review → ship chain.
 
 ```
-┌─────────────┐    ┌──────────────┐    ┌─────────────────┐
-│ /brainstorm │───▶│    /plan     │───▶│   /implement    │
-│             │    │              │    │                  │
-│ Skill:      │    │ Skill:       │    │ Skills (loop):   │
-│ brainstorm- │    │ writing-     │    │ confidence-check │
-│ ing         │    │ plans        │    │ test-driven-dev  │
-│             │    │              │    │ requesting-code- │
-│ Output:     │    │ Output:      │    │ review           │
-│ Design doc  │    │ Plan file    │    │                  │
-│ APPROVED    │    │ docs/plans/  │    │ Output: commits  │
-└─────────────┘    └──────────────┘    └────────┬────────┘
-                                                 │
-       ┌─────────────────────────────────────────┘
-       ▼
-┌─────────────┐    ┌──────────────┐
-│   /review   │───▶│    /git      │
-│             │    │              │
-│ Agent:      │    │ Skill:       │
-│ code-       │    │ (built-in)   │
-│ reviewer    │    │              │
-│             │    │ Output:      │
-│ Output:     │    │ Merged PR or │
-│ APPROVED or │    │ pushed branch│
-│ CHANGES     │    │              │
-└─────────────┘    └──────────────┘
+┌─────────────┐  [code/system] ┌──────────────┐    ┌─────────────────┐
+│ /brainstorm │───────────────▶│    /plan     │───▶│   /implement    │
+│             │                │              │    │                  │
+│ Skill:      │  [UI/UX task]  │ Skill:       │    │ Skills (loop):   │
+│ brainstorm- │──────────────┐ │ writing-     │    │ confidence-check │
+│ ing         │              │ │ plans        │    │ test-driven-dev  │
+│             │              ▼ │              │    │ requesting-code- │
+│ Output:     │ ┌──────────────┐ Output:      │    │ review           │
+│ Design doc  │ │/design-      │ Plan file    │    │                  │
+│ APPROVED    │ │orchestrate   │ docs/plans/  │    │ Output: commits  │
+└─────────────┘ └──────────────┘└──────────────┘    └────────┬────────┘
+                       │                                      │
+                       └──────────────────────────────────────┘
+                                                              ▼
+                                               ┌─────────────┐    ┌──────────────┐
+                                               │   /review   │───▶│    /git      │
+                                               │             │    │              │
+                                               │ Agent:      │    │ Skill:       │
+                                               │ code-       │    │ (built-in)   │
+                                               │ reviewer    │    │              │
+                                               │             │    │ Output:      │
+                                               │ Output:     │    │ Merged PR or │
+                                               │ APPROVED or │    │ pushed branch│
+                                               │ CHANGES     │    │              │
+                                               └─────────────┘    └──────────────┘
 ```
 
 ## Stage Details
 
 | Stage | Command | Skill/Agent | Gate | Output |
 |-------|---------|------------|------|--------|
-| Design | /brainstorm | brainstorming | User approval | docs/plans/*-design.md |
+| Design | /brainstorm | brainstorming | User approval | docs/plans/*-design.md → routes to /plan (code) or /design-orchestrate (UI/UX) |
 | Plan | /plan | writing-plans | User approval | docs/plans/*-plan.md |
 | Implement | /implement | tdd + confidence-check | Tests pass | Feature commits |
 | Review | /review | code-reviewer agent | APPROVED verdict | Review report |
@@ -56,6 +56,8 @@ Every stage transition requires a gate to be passed:
 - brainstorming (primary — owns process)
 - deep-research (if feasibility research needed)
 - architecture-design (if system design needed)
+- **Next step — code/system task:** → `/plan` (loads writing-plans skill)
+- **Next step — UI/UX task:** → `/design-orchestrate` (routes to design specialists)
 
 ### /plan
 - writing-plans (primary — owns process)

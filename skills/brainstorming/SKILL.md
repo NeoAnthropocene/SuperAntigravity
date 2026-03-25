@@ -37,7 +37,7 @@ You MUST create a task for each of these items and complete them in order:
 3. **Propose 2-3 approaches** — with trade-offs and your recommendation
 4. **Present design** — in sections scaled to their complexity, get user approval after each section
 5. **Write design doc** — save to `docs/plans/YYYY-MM-DD-<topic>-design.md` and commit
-6. **Transition to implementation** — load writing-plans skill to create implementation plan
+6. **Route to next step** — load `writing-plans` skill (for code) OR recommend `/design-orchestrate` (for UI/UX design tasks)
 
 ## Process Flow
 
@@ -50,7 +50,9 @@ digraph brainstorming {
     "User approves design?" [shape=diamond];
     "Incorporate modifications, re-present changed section" [shape=box];
     "Write design doc" [shape=box];
+    "Classify outcome" [shape=diamond];
     "Load writing-plans skill" [shape=doublecircle];
+    "Recommend /design-orchestrate" [shape=doublecircle];
 
     "Explore project context" -> "Ask clarifying questions";
     "Ask clarifying questions" -> "Propose 2-3 approaches";
@@ -60,11 +62,13 @@ digraph brainstorming {
     "User approves design?" -> "Incorporate modifications, re-present changed section" [label="approved with modifications"];
     "Incorporate modifications, re-present changed section" -> "Write design doc";
     "User approves design?" -> "Write design doc" [label="yes"];
-    "Write design doc" -> "Load writing-plans skill";
+    "Write design doc" -> "Classify outcome";
+    "Classify outcome" -> "Load writing-plans skill" [label="code/system"];
+    "Classify outcome" -> "Recommend /design-orchestrate" [label="UI/UX design"];
 }
 ```
 
-**The terminal state is loading writing-plans.** Do NOT load frontend-design, mcp-builder, or any other implementation skill. The ONLY skill you load after brainstorming is writing-plans.
+**Terminal states:** The ONLY next steps after brainstorming are `writing-plans` (for code/system tasks) or `/design-orchestrate` (for UI/UX design tasks). Do NOT load any direct implementation skill (no frontend-design, mcp-builder, etc.).
 
 ## The Process
 
@@ -100,9 +104,16 @@ digraph brainstorming {
 - Use elements-of-style:writing-clearly-and-concisely skill if available
 - Commit the design document to git
 
-**Implementation:**
-- Load the writing-plans skill to create a detailed implementation plan
-- Do NOT load any other skill. writing-plans is the next step.
+**Routing to next step:**
+- **Code/system task** → Load the `writing-plans` skill to create a detailed implementation plan
+- **UI/UX design task** → Recommend `/design-orchestrate` to route to the appropriate design specialist
+- Do NOT load any direct implementation skill from brainstorming
+
+**Recommended follow-ups to suggest (do NOT invoke automatically):**
+Based on the nature of the approved design, suggest relevant workflows the user may want to run separately:
+- Strategic/product decisions → `/business-panel` for expert analysis
+- Security-sensitive features → `/analyze` with security focus before implementation
+- Complex architecture → consult `system-architect` agent during `/plan`
 
 ## Key Principles
 
