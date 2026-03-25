@@ -41,13 +41,12 @@ git clone --depth 1 --branch "$BRANCH" "$REPO_URL" "$TMPDIR/superantigravity" 2>
 mkdir -p "$SKILLS_DIR" "$WORKFLOWS_DIR" "$AGENTS_DIR" "$GEMINI_DIR"
 
 log "Installing skills..."
-for skill_dir in "$TMPDIR/superantigravity/skills"/*/; do
-  skill_name=$(basename "$skill_dir")
-  if [ -f "$skill_dir/SKILL.md" ]; then
-    mkdir -p "$SKILLS_DIR/$skill_name"
-    cp -r "$skill_dir"/* "$SKILLS_DIR/$skill_name/"
-    echo "  ✓ $skill_name"
-  fi
+find "$TMPDIR/superantigravity/skills" -type f -name "SKILL.md" | while read -r skill_file; do
+  skill_dir=$(dirname "$skill_file")
+  rel_path="${skill_dir#$TMPDIR/superantigravity/skills/}"
+  mkdir -p "$SKILLS_DIR/$rel_path"
+  cp -r "$skill_dir"/* "$SKILLS_DIR/$rel_path/"
+  echo "  ✓ $rel_path"
 done
 
 log "Installing workflows..."
@@ -76,9 +75,9 @@ fi
 echo ""
 echo -e "${GREEN}✓ SuperAntigravity installed!${NC}"
 echo ""
-echo "  19 skills   → $SKILLS_DIR"
-echo "  16 workflows → $WORKFLOWS_DIR"
-echo "   6 agents   → $AGENTS_DIR"
+echo "  83 skills    → $SKILLS_DIR"
+echo "  46 workflows → $WORKFLOWS_DIR"
+echo "  18 agents    → $AGENTS_DIR"
 echo ""
 echo "Restart Antigravity and type /brainstorm to get started."
 echo ""

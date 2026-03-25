@@ -14,7 +14,7 @@ Restart Antigravity. That's it.
 
 ## What You Get
 
-### 19 Auto-Triggered Skills
+### 83 Auto-Triggered Skills
 
 Skills fire automatically when your task context matches — no commands needed.
 
@@ -46,7 +46,7 @@ Skills fire automatically when your task context matches — no commands needed.
 | `confidence-check` | About to implement — verifies readiness |
 | `browser-agent` | Testing UI flows, verifying web app behavior, browser automation |
 
-### 16 Slash Commands
+### 44 Slash Commands
 
 Type `/` + command name in Antigravity:
 
@@ -60,7 +60,8 @@ Type `/` + command name in Antigravity:
 | `/test` | Run tests with coverage |
 | `/git` | [Step 5] Git operations with smart commits |
 | `/analyze` | Code quality, security, performance review |
-| `/design` | Architecture and API design |
+| `/design-code` | Architecture and API design |
+| `/design-orchestrate` | Auto-routes design tasks |
 | `/troubleshoot` | Systematic debugging |
 | `/explain` | Explain code or concepts |
 | `/improve` | Apply code improvements |
@@ -74,7 +75,7 @@ Type `/` + command name in Antigravity:
 
 > Each command is backed by a workflow file in `~/.gemini/antigravity/global_workflows/` — you can inspect and customize them.
 
-### 6 Specialist Agents
+### 15 Specialist Agents
 
 | Agent | Specializes in |
 |-------|---------------|
@@ -86,6 +87,29 @@ Type `/` + command name in Antigravity:
 | `system-architect` | Distributed systems, migrations, observability |
 | `socratic-mentor` | Educational guide for Socratic discovery learning |
 | `repo-index` | Repository context compression and indexing |
+
+
+## Designer Skills (from designer-skills)
+
+Integrated from [designer-skills](https://github.com/Owl-Listener/designer-skills) with a design orchestrator for automatic routing.
+
+### Design Specialist Agents  
+| Agent | Group | Role |
+|---|---|---|
+| `design-orchestrator` | Meta | Auto-routes to the right design specialist |
+| `design-researcher` | design-research | Expert in user research methodologies |
+| `design-systems-architect` | design-systems | Expert in design systems |
+| `ux-strategist` | ux-strategy | Expert in UX strategy and competition |
+| `ui-designer` | ui-design | Expert in visual/UI design |
+| `interaction-designer` | interaction-design | Expert in interaction patterns |
+| `prototype-tester` | prototyping-testing | Expert in prototyping and validation |
+| `design-ops-lead` | design-ops | Expert in design operations |
+| `designer-toolkit-expert` | designer-toolkit | Expert in design documentation |
+
+### Design Slash Commands (Auto-Routed)
+
+Commands use the `/<group>--<command>` format. Example: `/design-research--discover`. 
+See the `workflows/` directory for the full list of 27 commands.
 
 ## How It Works
 

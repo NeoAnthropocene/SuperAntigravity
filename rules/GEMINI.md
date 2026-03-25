@@ -54,7 +54,8 @@ Type `/` followed by any of these names to trigger explicit workflows:
 | /test | Run tests with coverage |
 | /git | Git operations with smart commits |
 | /analyze | Code quality, security, performance analysis |
-| /design | Architecture and API design |
+| /design-code | Architecture and API design |
+| /design-orchestrate | Auto-routes to the right design specialist |
 | /troubleshoot | Debug issues systematically |
 | /explain | Explain code or concepts |
 | /improve | Apply improvements to code |
@@ -74,3 +75,26 @@ Type `/` followed by any of these names to trigger explicit workflows:
 | `confidence-check` | About to implement — verifies readiness |
 | `browser-agent` | Interacting with web browser, testing UI flows, verifying web app behavior |
 | `dependency-management` | Adding, updating, auditing, or evaluating project dependencies |
+
+
+## Designer Skills (from designer-skills)
+
+Integrated from [designer-skills](https://github.com/Owl-Listener/designer-skills) with a design orchestrator for automatic routing.
+
+### Design Specialist Agents  
+| Agent | Group | Role |
+|---|---|---|
+| `design-orchestrator` | Meta | Auto-routes to the right design specialist |
+| `design-researcher` | design-research | Expert in user research methodologies |
+| `design-systems-architect` | design-systems | Expert in design systems |
+| `ux-strategist` | ux-strategy | Expert in UX strategy and competition |
+| `ui-designer` | ui-design | Expert in visual/UI design |
+| `interaction-designer` | interaction-design | Expert in interaction patterns |
+| `prototype-tester` | prototyping-testing | Expert in prototyping and validation |
+| `design-ops-lead` | design-ops | Expert in design operations |
+| `designer-toolkit-expert` | designer-toolkit | Expert in design documentation |
+
+### Design Slash Commands
+
+27 commands prefixed by their group, e.g., `/design-research--discover`. 
+See the `global_workflows/` directory for the full list of available commands.

@@ -20,17 +20,29 @@ LIFTOFF_SKILLS=(
   verification-before-completion requesting-code-review receiving-code-review
   finishing-a-development-branch dispatching-parallel-agents writing-skills
   deep-research performance-optimization security-review architecture-design
-  confidence-check
+  confidence-check design-research design-systems ux-strategy ui-design
+  interaction-design prototyping-testing design-ops designer-toolkit
 )
 
 LIFTOFF_WORKFLOWS=(
-  brainstorm plan implement research build test git analyze design
-  troubleshoot explain improve review cleanup document estimate
+  brainstorm plan implement research build test git analyze design-code
+  troubleshoot explain improve review cleanup document estimate design-orchestrate
+  design-research--discover design-research--interview design-research--test-plan design-research--synthesize
+  design-systems--audit-system design-systems--create-component design-systems--tokenize
+  ux-strategy--strategize ux-strategy--benchmark ux-strategy--frame-problem
+  ui-design--design-screen ui-design--color-palette ui-design--type-system ui-design--responsive-audit
+  interaction-design--design-interaction interaction-design--map-states interaction-design--error-flow
+  prototyping-testing--prototype-plan prototyping-testing--evaluate prototyping-testing--test-plan prototyping-testing--experiment
+  design-ops--plan-sprint design-ops--handoff design-ops--setup-workflow
+  designer-toolkit--write-rationale designer-toolkit--build-presentation designer-toolkit--write-case-study
 )
 
 LIFTOFF_AGENTS=(
   code-reviewer backend-architect frontend-architect
   security-engineer deep-research system-architect
+  design-orchestrator design-researcher design-systems-architect
+  ux-strategist ui-designer interaction-designer prototype-tester
+  design-ops-lead designer-toolkit-expert
 )
 
 echo "This will remove SuperAntigravity skills, workflows, agents, and the GEMINI.md block."
