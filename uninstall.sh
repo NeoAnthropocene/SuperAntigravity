@@ -4,6 +4,7 @@ set -euo pipefail
 SKILLS_DIR="$HOME/.gemini/antigravity/skills"
 WORKFLOWS_DIR="$HOME/.gemini/antigravity/global_workflows"
 AGENTS_DIR="$HOME/.gemini/antigravity/agents"
+TOOLS_DIR="$HOME/.gemini/antigravity/tools"
 GEMINI_FILE="$HOME/.gemini/GEMINI.md"
 LIFTOFF_MARKER="# SuperAntigravity Skills"
 
@@ -20,8 +21,15 @@ LIFTOFF_SKILLS=(
   verification-before-completion requesting-code-review receiving-code-review
   finishing-a-development-branch dispatching-parallel-agents writing-skills
   deep-research performance-optimization security-review architecture-design
-  confidence-check design-research design-systems ux-strategy ui-design
-  interaction-design prototyping-testing design-ops designer-toolkit
+  confidence-check
+  design-ops design-research design-systems ux-strategy ui-design
+  interaction-design prototyping-testing designer-toolkit
+  campaign-strategy copywriting copy-editing social-content
+  seo-audit schema-markup programmatic-seo page-cro
+  form-cro signup-flow-cro popup-cro onboarding-cro
+  paywall-upgrade-cro pricing-strategy launch-strategy referral-program
+  free-tool-strategy marketing-ideas marketing-psychology paid-ads
+  email-sequence competitor-alternatives ab-test-setup analytics-tracking
 )
 
 LIFTOFF_WORKFLOWS=(
@@ -35,14 +43,21 @@ LIFTOFF_WORKFLOWS=(
   prototyping-testing--prototype-plan prototyping-testing--evaluate prototyping-testing--test-plan prototyping-testing--experiment
   design-ops--plan-sprint design-ops--handoff design-ops--setup-workflow
   designer-toolkit--write-rationale designer-toolkit--build-presentation designer-toolkit--write-case-study
+  business-panel spec-panel recommend
+  marketing-audit marketing-launch marketing-panel marketing-growth-experiment
+  marketing-content-pipeline marketing-campaign-builder
 )
 
 LIFTOFF_AGENTS=(
   code-reviewer backend-architect frontend-architect
   security-engineer deep-research system-architect
+  socratic-mentor repo-index
   design-orchestrator design-researcher design-systems-architect
   ux-strategist ui-designer interaction-designer prototype-tester
   design-ops-lead designer-toolkit-expert
+  marketing-growth-strategist marketing-conversion-specialist
+  marketing-content-strategist marketing-campaign-specialist
+  marketing-panel-experts business-panel-experts
 )
 
 echo "This will remove SuperAntigravity skills, workflows, agents, and the GEMINI.md block."
@@ -63,6 +78,12 @@ log "Removing agents..."
 for agent in "${LIFTOFF_AGENTS[@]}"; do
   [ -f "$AGENTS_DIR/$agent.md" ] && rm "$AGENTS_DIR/$agent.md" && echo "  ✓ $agent"
 done
+
+log "Removing tools..."
+if [ -d "$TOOLS_DIR" ]; then
+  rm -rf "$TOOLS_DIR"
+  echo "  ✓ tools directory"
+fi
 
 if [ -f "$GEMINI_FILE" ] && grep -q "$LIFTOFF_MARKER" "$GEMINI_FILE"; then
   log "Removing SuperAntigravity block from GEMINI.md..."

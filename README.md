@@ -202,7 +202,7 @@ The `/marketing-panel` workflow uses six distinct expert personas who debate cha
 SuperAntigravity ships a `tools/` directory (installed to `~/.gemini/antigravity/tools/`) giving agents direct access to 50+ marketing platforms:
 
 - **46 CLI scripts** (`tools/clis/`) — Zero-dependency Node.js wrappers for platforms like GA4, Ahrefs, Mailchimp, Google Ads, Meta Ads, Semrush, Stripe, Segment, HubSpot, and more. Agents use these via `run_command` with env var credentials — no npm install required.
-- **50 integration docs** (`tools/integrations/`) — API reference sheets with authentication guides, and rate limits for each platform.
+- **50 integration docs** (`tools/integrations/`) — API reference sheets with authentication guides, common operations, and rate limits for each platform.
 - **Registry** (`tools/REGISTRY.md`) — Quick-reference index agents consult to discover which tools are available and how to use them.
 
 Agents automatically check `~/.gemini/antigravity/tools/REGISTRY.md` when a task requires external platform data.

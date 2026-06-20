@@ -63,6 +63,12 @@ Type `/` followed by any of these names to trigger explicit workflows:
 | /cleanup | Remove dead code, optimize structure |
 | /document | Generate documentation |
 | /estimate | Development estimates |
+| /marketing-audit | Comprehensive marketing audit (SEO, CRO, content, analytics) |
+| /marketing-launch | Product or feature launch orchestration |
+| /marketing-panel | Expert marketing panel discussion |
+| /marketing-growth-experiment | Design and run growth experiments |
+| /marketing-content-pipeline | End-to-end content creation workflow |
+| /marketing-campaign-builder | Full campaign planning and execution |
 
 ## Specialist Skills
 
@@ -75,6 +81,7 @@ Type `/` followed by any of these names to trigger explicit workflows:
 | `confidence-check` | About to implement — verifies readiness |
 | `browser-agent` | Interacting with web browser, testing UI flows, verifying web app behavior |
 | `dependency-management` | Adding, updating, auditing, or evaluating project dependencies |
+| `campaign-strategy` | Planning, building, or analyzing multi-channel marketing campaigns |
 
 
 ## Designer Skills (from designer-skills)

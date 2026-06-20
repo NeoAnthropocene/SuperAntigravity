@@ -177,6 +177,13 @@ category_mapping:
     personas: ["--persona-refactorer", "--persona-mentor"]
     flags: ["--threshold", "--iterate", "--profile"]
 
+  marketing_category:
+    primary_commands: ["/marketing-audit", "/marketing-campaign-builder"]
+    secondary_commands: ["/marketing-launch", "/marketing-panel", "/marketing-growth-experiment", "/marketing-content-pipeline"]
+    mcp_servers: ["--seq"]
+    personas: ["--persona-marketing-growth-strategist", "--persona-marketing-content-strategist", "--persona-marketing-conversion-specialist", "--persona-marketing-panel-experts", "--persona-marketing-campaign-specialist"]
+    flags: ["--strategy", "--growth", "--seo", "--cro", "--campaign"]
+
   learning_category:
     primary_commands: ["/document --user --examples", "/analyze --code --c7"]
     secondary_commands: ["/brainstorm --interactive", "/help --specific"]

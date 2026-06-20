@@ -9,6 +9,7 @@ BRANCH="main"
 SKILLS_DIR="$HOME/.gemini/antigravity/skills"
 WORKFLOWS_DIR="$HOME/.gemini/antigravity/global_workflows"
 AGENTS_DIR="$HOME/.gemini/antigravity/agents"
+TOOLS_DIR="$HOME/.gemini/antigravity/tools"
 GEMINI_DIR="$HOME/.gemini"
 GEMINI_FILE="$GEMINI_DIR/GEMINI.md"
 LIFTOFF_MARKER="# SuperAntigravity Skills"
@@ -38,7 +39,7 @@ log "Downloading..."
 git clone --depth 1 --branch "$BRANCH" "$REPO_URL" "$TMPDIR/superantigravity" 2>/dev/null \
   || error "Failed to clone. Check your internet connection and try again."
 
-mkdir -p "$SKILLS_DIR" "$WORKFLOWS_DIR" "$AGENTS_DIR" "$GEMINI_DIR"
+mkdir -p "$SKILLS_DIR" "$WORKFLOWS_DIR" "$AGENTS_DIR" "$TOOLS_DIR" "$GEMINI_DIR"
 
 log "Installing skills..."
 find "$TMPDIR/superantigravity/skills" -type f -name "SKILL.md" | while read -r skill_file; do
@@ -63,6 +64,12 @@ for agent in "$TMPDIR/superantigravity/agents"/*.md; do
   echo "  ✓ ${name%.md}"
 done
 
+log "Installing tools..."
+if [ -d "$TMPDIR/superantigravity/tools" ]; then
+  cp -r "$TMPDIR/superantigravity/tools"/* "$TOOLS_DIR/" 2>/dev/null || true
+  echo "  ✓ tools directory (CLIs and Integrations)"
+fi
+
 log "Updating ~/.gemini/GEMINI.md..."
 if [ -f "$GEMINI_FILE" ] && grep -q "$LIFTOFF_MARKER" "$GEMINI_FILE"; then
   warn "SuperAntigravity block already in GEMINI.md — skipping (run uninstall.sh first to reinstall)"
@@ -75,9 +82,10 @@ fi
 echo ""
 echo -e "${GREEN}✓ SuperAntigravity installed!${NC}"
 echo ""
-echo "  83 skills    → $SKILLS_DIR"
-echo "  46 workflows → $WORKFLOWS_DIR"
-echo "  18 agents    → $AGENTS_DIR"
+echo "  107 skills    → $SKILLS_DIR"
+echo "  48 workflows  → $WORKFLOWS_DIR"
+echo "  23 agents     → $AGENTS_DIR"
+echo "  tools/        → $TOOLS_DIR (46 CLIs + 50 Integrations)"
 echo ""
 echo "Restart Antigravity and type /brainstorm to get started."
 echo ""
