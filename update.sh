@@ -66,18 +66,17 @@ NEW_AGENTS=() UPDATED_AGENTS=() MODIFIED_AGENTS=() UNCHANGED_AGENTS=()
 TOOLS_CHANGED=0
 
 # Skills
-for skill_dir in "$TMPDIR/superantigravity/skills"/*/; do
-  skill_name=$(basename "$skill_dir")
-  if [ -f "$skill_dir/SKILL.md" ]; then
-    installed_skill="$SKILLS_DIR/$skill_name/SKILL.md"
-    incoming_skill="$skill_dir/SKILL.md"
-    case $(classify_file "$installed_skill" "$incoming_skill") in
-      new)       NEW_SKILLS+=("$skill_name") ;;
-      modified)  MODIFIED_SKILLS+=("$skill_name") ;;
-      unchanged) UNCHANGED_SKILLS+=("$skill_name") ;;
-    esac
-  fi
-done
+while IFS= read -r -d '' skill_file; do
+  skill_dir=$(dirname "$skill_file")
+  rel_path="${skill_dir#$TMPDIR/superantigravity/skills/}"
+  installed_skill="$SKILLS_DIR/$rel_path/SKILL.md"
+  incoming_skill="$skill_file"
+  case $(classify_file "$installed_skill" "$incoming_skill") in
+    new)       NEW_SKILLS+=("$rel_path") ;;
+    modified)  MODIFIED_SKILLS+=("$rel_path") ;;
+    unchanged) UNCHANGED_SKILLS+=("$rel_path") ;;
+  esac
+done < <(find "$TMPDIR/superantigravity/skills" -type f -name "SKILL.md" -print0)
 
 # Workflows
 for wf in "$TMPDIR/superantigravity/workflows"/*.md; do
@@ -145,21 +144,20 @@ read -p "Continue? [Y/n] " -n 1 -r; echo ""
 
 # ── Execute update (backups happen here, after confirmation) ───────────────────
 log "Updating skills..."
-for skill_dir in "$TMPDIR/superantigravity/skills"/*/; do
-  skill_name=$(basename "$skill_dir")
-  if [ -f "$skill_dir/SKILL.md" ]; then
-    installed_skill="$SKILLS_DIR/$skill_name/SKILL.md"
-    # Back up if user-modified
-    if [ -f "$installed_skill" ] && ! diff -q "$installed_skill" "$skill_dir/SKILL.md" >/dev/null 2>&1; then
-      cp "$installed_skill" "${installed_skill%.md}.bak"
-      echo "  ↩ $skill_name (backed up)"
-    fi
-    mkdir -p "$SKILLS_DIR/$skill_name"
-    cp -r "$skill_dir"/* "$SKILLS_DIR/$skill_name/"
-    [[ " ${NEW_SKILLS[*]} " =~ " $skill_name " ]] && echo "  ✓ $skill_name (new)" \
-      || echo "  ✓ $skill_name"
+while IFS= read -r -d '' skill_file; do
+  skill_dir=$(dirname "$skill_file")
+  rel_path="${skill_dir#$TMPDIR/superantigravity/skills/}"
+  installed_skill="$SKILLS_DIR/$rel_path/SKILL.md"
+  # Back up if user-modified
+  if [ -f "$installed_skill" ] && ! diff -q "$installed_skill" "$skill_file" >/dev/null 2>&1; then
+    cp "$installed_skill" "${installed_skill%.md}.bak"
+    echo "  ↩ $rel_path (backed up)"
   fi
-done
+  mkdir -p "$SKILLS_DIR/$rel_path"
+  cp -r "$skill_dir"/* "$SKILLS_DIR/$rel_path/"
+  [[ " ${NEW_SKILLS[*]} " =~ " $rel_path " ]] && echo "  ✓ $rel_path (new)" \
+    || echo "  ✓ $rel_path"
+done < <(find "$TMPDIR/superantigravity/skills" -type f -name "SKILL.md" -print0)
 
 log "Updating workflows..."
 for wf in "$TMPDIR/superantigravity/workflows"/*.md; do
