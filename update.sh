@@ -139,8 +139,12 @@ if [ "${#ALL_MODIFIED[@]}" -gt 0 ]; then
 fi
 
 echo ""
-read -p "Continue? [Y/n] " -n 1 -r; echo ""
-[[ $REPLY =~ ^[Yy]$|^$ ]] || { echo "Aborted."; exit 0; }
+if [ -t 0 ]; then
+  read -p "Continue? [Y/n] " -n 1 -r; echo ""
+  [[ ! $REPLY =~ ^[Yy]?$ ]] && { echo "Aborted."; exit 0; }
+else
+  log "Non-interactive mode detected — continuing automatically."
+fi
 
 # ── Execute update (backups happen here, after confirmation) ───────────────────
 log "Updating skills..."
@@ -195,11 +199,11 @@ fi
 log "Refreshing ~/.gemini/GEMINI.md bootstrap block..."
 if [ -f "$GEMINI_FILE" ] && grep -q "$LIFTOFF_MARKER" "$GEMINI_FILE"; then
   python3 -c "
-import re
-content = open('$GEMINI_FILE').read()
+import re, sys
+content = open(sys.argv[1]).read()
 cleaned = re.sub(r'\n*# SuperAntigravity Skills.*', '', content, flags=re.DOTALL).rstrip()
-open('$GEMINI_FILE', 'w').write(cleaned + '\n\n' if cleaned else '')
-"
+open(sys.argv[1], 'w').write((cleaned + '\n\n') if cleaned else '')
+" "$GEMINI_FILE"
 fi
 [ -s "$GEMINI_FILE" ] && printf '\n\n' >> "$GEMINI_FILE"
 cat "$TMPDIR/superantigravity/rules/GEMINI.md" >> "$GEMINI_FILE"
