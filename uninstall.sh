@@ -99,5 +99,15 @@ else
   warn "No SuperAntigravity block found in GEMINI.md"
 fi
 
+IDE_DIR="$HOME/.gemini/antigravity-ide"
+if [ -d "$IDE_DIR" ]; then
+  log "Removing Antigravity IDE links..."
+  [ -L "$IDE_DIR/skills" ] && rm "$IDE_DIR/skills"
+  [ -L "$IDE_DIR/global_workflows" ] && rm "$IDE_DIR/global_workflows"
+  [ -L "$IDE_DIR/agents" ] && rm "$IDE_DIR/agents"
+  [ -L "$IDE_DIR/tools" ] && rm "$IDE_DIR/tools"
+  echo "  ✓ IDE links removed"
+fi
+
 echo ""
 echo -e "${GREEN}✓ SuperAntigravity uninstalled.${NC}"

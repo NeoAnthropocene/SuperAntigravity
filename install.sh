@@ -87,6 +87,9 @@ echo "  48 workflows  → $WORKFLOWS_DIR"
 echo "  23 agents     → $AGENTS_DIR"
 echo "  tools/        → $TOOLS_DIR (46 CLIs + 50 Integrations)"
 echo ""
+
+
+
 echo "Restart Antigravity and type /brainstorm to get started."
 echo ""
 
@@ -94,3 +97,17 @@ echo ""
 MANIFEST_FILE="$HOME/.gemini/antigravity/.superantigravity-installed"
 echo "superantigravity-version=1.0.0" > "$MANIFEST_FILE"
 echo "install-date=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$MANIFEST_FILE"
+
+# Copy for Antigravity IDE
+IDE_DIR="$HOME/.gemini/antigravity-ide"
+if [ -d "$IDE_DIR" ]; then
+  log "Copying for Antigravity IDE..."
+  rm -rf "$IDE_DIR/skills" "$IDE_DIR/global_workflows" "$IDE_DIR/agents" "$IDE_DIR/tools"
+  cp -r "$SKILLS_DIR" "$IDE_DIR/skills"
+  cp -r "$WORKFLOWS_DIR" "$IDE_DIR/global_workflows"
+  cp -r "$AGENTS_DIR" "$IDE_DIR/agents"
+  cp -r "$TOOLS_DIR" "$IDE_DIR/tools"
+  cp "$MANIFEST_FILE" "$IDE_DIR/.superantigravity-installed" 2>/dev/null || true
+  echo "  ✓ Copied to $IDE_DIR"
+  echo ""
+fi
